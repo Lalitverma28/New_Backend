@@ -188,7 +188,7 @@ const loginUser = asyncHandler(async(req,res)=>{
       .refreshToken ||req.body.refreshToken
 
      try {
-       if(incomingRefreshToken){
+       if(!incomingRefreshToken){
          throw new ApiError(401,"unauthorized request")
        }
  
