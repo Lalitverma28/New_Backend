@@ -163,8 +163,8 @@ const loginUser = asyncHandler(async(req,res)=>{
       await  User.findByIdAndUpdate(
         req.user._id,
        {
-         $set:{
-            refreshToken: undefined
+         $unset:{
+            refreshToken: 1,
          }
        },
        {
@@ -349,7 +349,7 @@ const changeCurrentPassword = asyncHandler(async(req,
         )
     })
 
-  const getUserChannelProfil = asyncHandler(async(req,res)=>{ 
+  const getUserChannelProfile = asyncHandler(async(req,res)=>{ 
      const{username} = req.params
     
      if(!username?.trim()){
@@ -482,5 +482,6 @@ export  {
     updateAccountDetails,
     updateUserAvatar,
     updateUserCoverImage,
+    getUserChannelProfile,
     getWatchHistory
 }
